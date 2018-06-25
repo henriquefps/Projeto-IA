@@ -1,0 +1,1 @@
+Esse projeto é capaz de ler a imagem dentro do diretorio e salvar um histograma dela na pasta histogramas. Dá uma sacada!
