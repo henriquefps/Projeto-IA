@@ -5,7 +5,7 @@ import numpy as np
 import _pickle as cPickle
 
 def load_batch():
-    path = '/Users/henrique/Downloads/cifar-10-batches-py/' # Especifica o cominho da pasta do cifar
+    path = '' # Especifica o cominho da pasta do cifar
     file = 'data_batch_1' # Especifica qual arquivo sera lido
     f = open(path+file, 'rb') # abre o arquivo
     dict = cPickle.load(f, encoding='latin1') # Eu coloquei o enconding como latin1 pq achei em uma 
@@ -47,6 +47,6 @@ def invertImageColors(image):
 
 
 for x in range(5):
-	saveImage(images[x], "label-"+ str(labels[x])+ "myImage-" + str(x) + ".png")
+	saveImage(images[x],"myImage-" + str(x) + ".png")
 	#showImage(images[x])
 
