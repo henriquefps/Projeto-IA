@@ -1990,7 +1990,7 @@ dataset_de_testes = [[0,0,0,1,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,1,1,0,0,0,0,0,2,0,0,
 
 # dataset[n][256] == classe da imagem n, 0 == Nao_Cavalo, 1 == Cavalo
 
-limiar = 3000 # Valor escolhido para ser comparado na funcao de aticavacao
+limiar = 3500 # Valor escolhido para ser comparado na funcao de aticavacao
 taxa_de_aprendizado = 0.1
 embaralhar(dataset_de_treino) # Embaralha o dataset de treino para evitar vicios, vem de random.shuffle
 num_iteracoes_treino = 100
