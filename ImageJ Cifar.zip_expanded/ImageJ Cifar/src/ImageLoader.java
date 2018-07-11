@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,8 +10,26 @@ public class ImageLoader {
 	public static void main(String[] args) throws IOException {
 
 		String pathFile = "src/Imagens/Imagens-Para-Histograma/myImage-";
+//		String classePathFile = "src/Imagens/Imagens-de-treino-em-PNG/";
 		
-		for (int j = 150; j < 300; j++) {
+		File folder = new File("src/Imagens/Imagens-de-treino-em-PNG/");
+		File [] listaDeArquivos = folder.listFiles();
+		String[] nomeDosArquivos = new String[listaDeArquivos.length];
+		
+		FileWriter saidas = new FileWriter("histogramas.txt");
+		
+		for (int i = 0; i < nomeDosArquivos.length; i++) {
+			nomeDosArquivos[i] = listaDeArquivos[i].getName().toString();
+		}
+		
+		for (int j = 0; j < listaDeArquivos.length; j++) {
+			String classeDaImagem = null;
+			for (int i = 0; i < nomeDosArquivos.length; i++) {
+				if (nomeDosArquivos[i].contains("myImage-" + j + "l")) {
+					classeDaImagem = String.valueOf(nomeDosArquivos[i].charAt(nomeDosArquivos[i].length() - 5));
+					break;
+				}
+			}
 			ImagePlus imp = IJ.openImage(pathFile + j + ".png");
 			int array[] = imp.getProcessor().getHistogram();
 			String histograma = "";
@@ -20,15 +39,22 @@ public class ImageLoader {
 			//FileWriter file = new FileWriter("src/Imagens/Histogramas/histograma_" + imp.getTitle() + ".txt");
 			//PrintWriter prt = new PrintWriter(file);
 			//prt.print(histograma);
-			if (j == 11 || j == 12 || j == 37 || j == 43 || j == 52 || j == 68 || j == 73 || j == 84 || j == 85 || j == 87 || j == 113 || j == 114 || j == 131 || j == 133 || j == 152 || j == 163 || j == 172 || j == 178 || j == 181 || j == 191 || j == 211 || j == 230 || j == 237 || j == 256 || j == 267 || j == 289 || j == 294) {
+//			if (j == 11 || j == 12 || j == 37 || j == 43 || j == 52 || j == 68 || j == 73 || j == 84 || j == 85 || j == 87 || j == 113 || j == 114 || j == 131 || j == 133 || j == 152 || j == 163 || j == 172 || j == 178 || j == 181 || j == 191 || j == 211 || j == 230 || j == 237 || j == 256 || j == 267 || j == 289 || j == 294) {
+//				histograma += "1";
+//			} else {
+//				histograma += "0";
+//			}
+			if (classeDaImagem.equals("7")) {
 				histograma += "1";
 			} else {
 				histograma += "0";
 			}
-			System.out.println("["+histograma+"],");
+			saidas.write("["+histograma+"],\n");
 			//file.close();
 
 		}
+		
+		saidas.close();
 	}
 
 }
