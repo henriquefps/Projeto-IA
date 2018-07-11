@@ -311,7 +311,7 @@ embaralhar(dataset_de_treino) # Embaralha o dataset de treino para evitar vicios
 pesos = []
 
 for x in range(256):
-    pesos.append(randint(1, 10)) # Inicia os pesos capa cada entrada aleatoriamente ente 1 e 10
+    pesos.append(randint(1, 10)) # Inicia os pesos de cada entrada aleatoriamente com valores entre 1 e 10
 
 def avaliar_entrada(histograma, pesos, limiar): # Funcao ativacao
     valor = 0
@@ -370,7 +370,6 @@ def percentual_de_acerto(dataset_testes, resultados): # Calcula o percentual de 
             acertos = acertos + 1
     return acertos/len(dataset_testes)
 
-#
 print ("Pesos antes do treino: " + str(pesos))
 print ("Pesos apos o treino: " + str(iteracoes_de_treino(dataset_de_treino, pesos, taxa_de_aprendizado, limiar, 100)))
 print("% de acerto: " + str(percentual_de_acerto(dataset_de_testes, testar_com_dataset(dataset_de_testes, pesos, limiar))))
