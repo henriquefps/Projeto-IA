@@ -2053,9 +2053,20 @@ def percentual_de_acerto(dataset_testes, resultados): # Calcula o percentual de 
             acertos = acertos + 1
     return acertos/len(dataset_testes)
 
+def quantificar_entradas(dataset):
+    cavalos = 0
+    nao_cavalos = 0
+    for x in range(len(dataset)):
+        if dataset[x][256] == 1:
+            cavalos = cavalos + 1
+        else:
+            nao_cavalos = nao_cavalos + 1
+    return "Cavalos: " + str(cavalos) + "\nNao Cavalos: " + str(nao_cavalos)
 print("Imagens para treino: " + str(len(dataset_de_treino)))
 print("Imagens para testes: " + str(len(dataset_de_testes)))
 print("Pesos antes do treino: " + str(pesos))
+#print(quantificar_entradas(dataset_de_treino))
+#print(quantificar_entradas(dataset_de_testes))
 print("Pesos apos o treino: " + str(iteracoes_de_treino(dataset_de_treino, pesos, taxa_de_aprendizado, limiar, num_iteracoes_treino)))
 print("% de acerto: " + str(percentual_de_acerto(dataset_de_testes, testar_com_dataset(dataset_de_testes, pesos, limiar))))
 
