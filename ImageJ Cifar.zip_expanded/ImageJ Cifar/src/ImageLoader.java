@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import ij.*;
 
@@ -49,7 +48,7 @@ public class ImageLoader {
 			} else {
 				histograma += "0";
 			}
-			saidas.write("["+histograma+"],\n");
+			saidas.write("{"+histograma+"},\n");
 			//file.close();
 
 		}
