@@ -41,7 +41,7 @@ public class SLP {
 	}
 	
 	private void treinarPerceptronComEntrada(int [] histograma) {
-		int saidaEsperada = histograma[255];
+		int saidaEsperada = histograma[256];
 		int saidaReal = avaliarEntrada(histograma);
 		if (saidaReal != saidaEsperada) {
 			for (int i = 0; i < 256; i++)
@@ -85,18 +85,18 @@ public class SLP {
 		int cavalos = 0;
 		int naoCavalos = 0;
 		for (int i = 0; i < dataset.length; i++) {
-			if (dataset[i][255] == 1)
+			if (dataset[i][256] == 1)
 				cavalos++;
 			else
 				naoCavalos++;
 		}
-		return "Cavalo: " + cavalos + "\nNão Cavalos: " + naoCavalos + "\n";
+		return "\n\tCavalo: " + cavalos + "\n\tNão Cavalos: " + naoCavalos + "\n";
 	}
 	
 	private float percentualDeAcerto(int [][] datasetTestes, int [] resultados) {
 		int acertos = 0;
 		for (int i = 0; i < datasetTestes.length; i++) {
-			if (datasetTestes[i][255] == resultados[i])
+			if (datasetTestes[i][256] == resultados[i])
 				acertos++;
 		}
 		return (float) acertos/datasetTestes.length;
@@ -107,14 +107,14 @@ public class SLP {
 		
 		System.out.println("Imagens para treino: " + datasetDeTreino.length);
 		System.out.println("Imagens para teste: " + datasetDeTestes.length);
+
+		System.out.println("Quantificar entradas treino: " + quantificarEntradas(datasetDeTreino));
+		System.out.println("Quantificar entradas testes: " + quantificarEntradas(datasetDeTestes));
 		
 		System.out.print("Pesos antes do treino: ");
 		for (int i = 0; i < pesos.size() - 1; i++)
 			System.out.print(pesos.get(i) + ", ");
 		System.out.println(pesos.get(pesos.size() - 1) + ".");
-		
-		System.out.println("Quantificar entradas treino: " + quantificarEntradas(datasetDeTreino));
-		System.out.println("Quantificar entradas testes: " + quantificarEntradas(datasetDeTestes));
 		
 		iteracoesDeTreino(datasetDeTreino);
 		
@@ -129,7 +129,7 @@ public class SLP {
 			System.out.print(resultados[i] + ", ");
 		System.out.println(resultados[resultados.length - 1] + ".");
 		
-		System.out.println("Percentual de acerto: " + percentualDeAcerto(datasetDeTestes, resultados));
+		System.out.println("Percentual de acerto: " + percentualDeAcerto(datasetDeTestes, resultados) * 100 + "%");
 	}
 	
 }
