@@ -73,11 +73,8 @@ def executar_programa():
                 nao_cavalos = nao_cavalos + 1
         return "Cavalos: " + str(cavalos) + " | Nao Cavalos: " + str(nao_cavalos)
 
-
-    dataset_de_treino, dataset_de_testes = getDatasets()
-
     # dataset[n][256] == classe da imagem n, 0 == Nao_Cavalo, 1 == Cavalo
-
+    dataset_de_treino, dataset_de_testes = getDatasets()
     limiar = 3500  # Valor escolhido para ser comparado na funcao de aticavacao
     taxa_de_aprendizado = 0.1
     num_iteracoes_treino = 100
