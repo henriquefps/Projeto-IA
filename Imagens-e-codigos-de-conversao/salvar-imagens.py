@@ -46,9 +46,9 @@ def invertImageColors(image):
 	return image
 
 
-for x in range(2000):
-	saveImage(images[x],"myImage-" + str(x) + "label-"+ str(labels[x]) +".png")
-	#saveImage(images[x],"myImage-" + str(x) + ".png")
+for x in range(2000, 6000):
+	#saveImage(images[x],"myImage-" + str(x) + "label-"+ str(labels[x]) +".png")
+	saveImage(images[x],"myImage-" + str(x) + ".png")
 	#saveImage(images[x],"label-"+ str(labels[x]) + "myImage-" + str(x) + ".png")
 
 	#showImage(images[x])
