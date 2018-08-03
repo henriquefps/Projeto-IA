@@ -2,13 +2,10 @@ from random import randint
 from datasets import *
 
 
-def executar_programa(limiar_de_ativacao, tx_de_aprendizado):
+def executar_programa(limiar_de_ativacao, tx_de_aprendizado, iteracoes, comentarios):
 
     def iniciar_pesos():
-        lista_de_pesos = []
-        for x in range(256):
-            lista_de_pesos.append(randint(1, 10))  # Inicia os pesos de cada entrada aleatoriamente com valores entre 1 e 10
-        return lista_de_pesos
+        return [randint(1, 10) for x in range(0, 256)]
 
     def avaliar_entrada(histograma, pesos, limiar):  # Funcao ativacao
         valor = 0
@@ -75,6 +72,7 @@ def executar_programa(limiar_de_ativacao, tx_de_aprendizado):
                 else:
                     falso_negativo = falso_negativo + 1
 
+        print("Matriz de Confusao")
         print("Calvalos(Acertos: " + str(verdadeiro_positivo) + " | Erros: " + str(falso_positivo) + ")")
         print("Nao Calvalos(Acertos: " + str(verdadeiro_negativo) + " | Erros: " + str(falso_negativo) + ")")
         print("Acertos totais: " + str(acertos))
@@ -91,19 +89,29 @@ def executar_programa(limiar_de_ativacao, tx_de_aprendizado):
         return "Cavalos: " + str(cavalos) + " | Nao Cavalos: " + str(nao_cavalos), cavalos, nao_cavalos
 
     # dataset[n][256] == classe da imagem n, 0 == Nao_Cavalo, 1 == Cavalo
-    dataset_de_treino, dataset_de_testes = getDatasets()
+    dataset_de_treino, dataset_de_testes = get_datasets()
     limiar = limiar_de_ativacao  # Valor escolhido para ser comparado na funcao de aticavacao
     taxa_de_aprendizado = tx_de_aprendizado
-    num_iteracoes_treino = 100
+    num_iteracoes_treino = iteracoes
     pesos = iniciar_pesos()
-    print("Imagens para treino: " + str(len(dataset_de_treino)))
-    print("Imagens para testes: " + str(len(dataset_de_testes)))
-    print("Dataset de Treino(" + quantificar_entradas(dataset_de_treino)[0] + ")")
-    print("Dataset de Testes(" + quantificar_entradas(dataset_de_testes)[0] + ")")
-    print("Pesos antes do treino: " + str(pesos) + "\nTreinando...")
-    print("Pesos apos o treino: " + str(iteracoes_de_treino(dataset_de_treino, pesos, taxa_de_aprendizado, limiar, num_iteracoes_treino)))
-    print("Avaliacoes apos Treino: " + str(testar_com_dataset(dataset_de_testes, pesos, limiar)))
-    print("% de acerto: " + str(percentual_de_acerto(dataset_de_testes, testar_com_dataset(dataset_de_testes, pesos, limiar))))
+    if comentarios == 1:
+        print("Imagens para treino: " + str(len(dataset_de_treino)))
+        print("Imagens para testes: " + str(len(dataset_de_testes)))
+        print("Dataset de Treino(" + quantificar_entradas(dataset_de_treino)[0] + ")")
+        print("Dataset de Testes(" + quantificar_entradas(dataset_de_testes)[0] + ")")
+        print("Pesos antes do treino: " + str(pesos) + "\nTreinando...")
+        print("Pesos apos o treino: " + str(iteracoes_de_treino(dataset_de_treino, pesos, taxa_de_aprendizado, limiar, num_iteracoes_treino)))
+        print("Avaliacoes apos Treino: " + str(testar_com_dataset(dataset_de_testes, pesos, limiar)))
+        print("% de acerto: " + str(percentual_de_acerto(dataset_de_testes, testar_com_dataset(dataset_de_testes, pesos, limiar))))
+    elif comentarios == 0:
+        iteracoes_de_treino(dataset_de_treino, pesos, taxa_de_aprendizado, limiar, num_iteracoes_treino)
+        print("% de acerto: " + str(percentual_de_acerto(dataset_de_testes, testar_com_dataset(dataset_de_testes, pesos, limiar))))
 
 
-executar_programa(limiar_de_ativacao=10000, tx_de_aprendizado=0.1)
+def main():
+    for i in range(20):
+        print("Execucao: " + str(i + 1))
+        executar_programa(limiar_de_ativacao=4000, tx_de_aprendizado=0.1, iteracoes=100, comentarios=1)
+
+
+main()

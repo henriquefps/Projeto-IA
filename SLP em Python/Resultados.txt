@@ -1,0 +1,40 @@
+Execucao: 1
+% de acerto: 0.4972067039106145
+Execucao: 2
+% de acerto: 0.5195530726256983
+Execucao: 3
+% de acerto: 0.5
+Execucao: 4
+% de acerto: 0.49441340782122906
+Execucao: 5
+% de acerto: 0.4748603351955307
+Execucao: 6
+% de acerto: 0.4720670391061452
+Execucao: 7
+% de acerto: 0.5335195530726257
+Execucao: 8
+% de acerto: 0.505586592178771
+Execucao: 9
+% de acerto: 0.5167597765363129
+Execucao: 10
+% de acerto: 0.4860335195530726
+Execucao: 11
+% de acerto: 0.505586592178771
+Execucao: 12
+% de acerto: 0.5083798882681564
+Execucao: 13
+% de acerto: 0.5307262569832403
+Execucao: 14
+% de acerto: 0.5363128491620112
+Execucao: 15
+% de acerto: 0.5223463687150838
+Execucao: 16
+% de acerto: 0.4664804469273743
+Execucao: 17
+% de acerto: 0.5
+Execucao: 18
+% de acerto: 0.5027932960893855
+Execucao: 19
+% de acerto: 0.5083798882681564
+Execucao: 20
+% de acerto: 0.505586592178771

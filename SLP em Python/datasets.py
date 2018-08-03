@@ -1,8 +1,10 @@
 from random import shuffle as embaralhar
-def getDatasets():
+
+
+def get_datasets():
     file = open("histogramas.txt", "r")
     dataset1 = [[int(num) for num in line.split(',')] for line in file]
-    print("Tamanho total do dataset: " + str(len(dataset1)))
+    # print("Tamanho total do dataset: " + str(len(dataset1)))
     contar_cavalos = 0
     dataset = []
     for x in range(len(dataset1)):
