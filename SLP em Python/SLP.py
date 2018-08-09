@@ -123,7 +123,7 @@ def main():
                 elif j == 3:
                     tx_de_aprendizado = 5
                 print("Taxa de aprendizado: " + str(tx_de_aprendizado))
-                executar_programa(limiar_de_ativacao, tx_de_aprendizado, iteracoes=100, comentarios=1)
+                executar_programa(limiar_de_ativacao, tx_de_aprendizado, iteracoes=100, comentarios=0)
                 print("\n")
             print("---------------------------------------------------------------------------------------")
         limiar_de_ativacao += 200
