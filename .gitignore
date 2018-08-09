@@ -4,3 +4,9 @@
 \.idea/modules\.xml
 
 \.idea/workspace\.xml
+
+SLP em Python/\.idea/
+
+SLP em Python/__pycache__/
+
+SLP em Python/venv/
