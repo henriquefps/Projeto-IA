@@ -4,6 +4,7 @@ from PIL import Image
 import numpy as np
 import _pickle as cPickle
 
+
 def load_batch():
     path = '/Users/henrique/git/Projeto-IA/Imagens-e-codigos-de-conversao/' # Especifica o cominho da pasta do cifar
     file = 'data_batch_1' # Especifica qual arquivo sera lido
@@ -11,7 +12,7 @@ def load_batch():
     dict = cPickle.load(f, encoding='latin1') # Eu coloquei o enconding como latin1 pq achei em uma 
     										  # pagina dizendo que funcionava, antes dele dava erro
     images = dict['data']
-    #images = np.reshape(images, (10000, 3, 32, 32))
+    # images = np.reshape(images, (10000, 3, 32, 32))
     labels = dict['labels']
     imagearray = np.array(images)   # gera um array 10000 x 3072 com as informacoes RGB de cada pixel de cada imagem
     labelarray = np.array(labels)   # gera um array de 10000 com a classe de cada imagem
@@ -34,7 +35,9 @@ def showImage(image):
 	pass
 
 # Essa função eu fiz de teste, para o OpenCV utiliza-se BGR, não RGB, aí fiz a função que faz essa transformação
-def invertImageColors(image):
+
+
+def invert_image_colors(image):
 	for x in range(32):
 		for y in range(32):
 			aux0 = image[x][y][0]
