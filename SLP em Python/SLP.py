@@ -73,8 +73,8 @@ def executar_programa(limiar_de_ativacao, tx_de_aprendizado, iteracoes, comentar
                     falso_negativo = falso_negativo + 1
 
         print("Matriz de Confusao")
-        print("Calvalos(Acertos: " + str(verdadeiro_positivo) + " | Erros: " + str(falso_positivo) + ")")
-        print("Nao Calvalos(Acertos: " + str(verdadeiro_negativo) + " | Erros: " + str(falso_negativo) + ")")
+        print("Cavalos(Acertos: " + str(verdadeiro_positivo) + " | Erros: " + str(falso_positivo) + ")")
+        print("Nao Cavalos(Acertos: " + str(verdadeiro_negativo) + " | Erros: " + str(falso_negativo) + ")")
         print("Acertos totais: " + str(acertos))
         return acertos/len(dataset_testes)
 
@@ -109,9 +109,23 @@ def executar_programa(limiar_de_ativacao, tx_de_aprendizado, iteracoes, comentar
 
 
 def main():
-    for i in range(20):
-        print("Execucao: " + str(i + 1))
-        executar_programa(limiar_de_ativacao=4000, tx_de_aprendizado=0.1, iteracoes=100, comentarios=1)
-
+    limiar_de_ativacao = 3000
+    for i in range(6):
+        for j in range(4):
+            for k in range(5):
+                print("Limiar de ativaçao: " + str(limiar_de_ativacao))
+                if j == 0:
+                    tx_de_aprendizado = 0.01
+                elif j == 1:
+                    tx_de_aprendizado = 0.1
+                elif j == 2:
+                    tx_de_aprendizado = 1
+                elif j == 3:
+                    tx_de_aprendizado = 5
+                print("Taxa de aprendizado: " + str(tx_de_aprendizado))
+                executar_programa(limiar_de_ativacao, tx_de_aprendizado, iteracoes=100, comentarios=0)
+                print("\n")
+            print("---------------------------------------------------------------------------------------")
+        limiar_de_ativacao += 200
 
 main()
